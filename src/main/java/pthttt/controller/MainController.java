@@ -29,7 +29,7 @@ public class MainController {
 	public String processLogin(@RequestParam("tenDangNhap") String tenDangNhap, 
 			@RequestParam("matKhau") String matKhau, @ModelAttribute NhanVien nhanVien, HttpSession session) {
 
-		if (nhanVienService.checkNhanVien(tenDangNhap, matKhau)) {
+		if (nhanVienService.checkNhanVien(tenDangNhap, matKhau)==true) {
 			nhanVien = nhanVienService.findNhanVien(tenDangNhap, matKhau);
 			if (nhanVien.getBoPhan().equalsIgnoreCase("QLyKinhDoanh")) {
 				session.setAttribute("hoTenKinhDoanh", nhanVienService.findNhanVien(tenDangNhap, matKhau).getHoTen());
@@ -51,6 +51,7 @@ public class MainController {
 				return "redirect:/ListNhanVien_QLy";
 			}
 		}
+	
 		return "redirect:/LoginPage";
 	}
 

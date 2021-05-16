@@ -4,13 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import pthttt.entity.NhanVien;
 import pthttt.repository.NhanVienRepository;
 
 @Service
-@Transactional
 public class NhanVienService {
 
 	@Autowired
