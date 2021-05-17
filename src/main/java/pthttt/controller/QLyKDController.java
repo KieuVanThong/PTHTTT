@@ -58,7 +58,7 @@ public class QLyKDController {
 		listTP = thanhPhamService.findAllThanhPhams();
 		model.addAttribute("pdhs", listpdh);
 		model.addAttribute("tps", listTP);
-		return "quanlyKD_ListPDH";
+		return "quanLyKD_ListPDH";
 	}
 
 	@GetMapping("/AddPhieuDatHang")
@@ -160,11 +160,8 @@ public class QLyKDController {
 
 	@GetMapping("/Active_AddThanhPham")
 	public String active_AddThanhPham(@RequestParam("maPhieu") String maPhieu, @RequestParam("tenSanPham") String tenSanPham,
-			@RequestParam("soLuong") int soLuong, //
-			@RequestParam("loaiGia") float loaiGia, @RequestParam("trangThai") String trangThai,
-			@ModelAttribute SanPham sanPham, //
-			@ModelAttribute ThanhPham thanhPham, @ModelAttribute PhieuDatHang phieuDatHang,
-			@ModelAttribute Xuong xuong) {
+			@RequestParam("soLuong") int soLuong,@RequestParam("loaiGia") float loaiGia, @RequestParam("trangThai") String trangThai,
+			@ModelAttribute SanPham sanPham,@ModelAttribute ThanhPham thanhPham, @ModelAttribute PhieuDatHang phieuDatHang,@ModelAttribute Xuong xuong) {
 
 		sanPham = sanPhamService.findSanPham(tenSanPham);
 		phieuDatHang = pdhService.findOnePhieuDatHangByMa(maPhieu);

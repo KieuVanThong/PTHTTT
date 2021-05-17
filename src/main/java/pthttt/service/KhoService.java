@@ -15,4 +15,8 @@ public class KhoService {
 	public Kho findOneByID(int ID) {
 		return khoRepository.findByID(ID);
 	}
+	
+	public Kho save(Kho kho) {
+		return khoRepository.save(kho);
+	}
 }

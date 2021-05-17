@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import pthttt.entity.Kho;
 import pthttt.entity.NguyenVatLieu;
 import pthttt.entity.NhanVien;
 import pthttt.entity.SanPham;
+import pthttt.entity.Xuong;
+import pthttt.service.KhoService;
 import pthttt.service.NguyenVatLieuService;
 import pthttt.service.NhanVienService;
 import pthttt.service.SanPhamService;
+import pthttt.service.XuongService;
 
 @Controller
 public class QLyController {
@@ -31,6 +35,12 @@ public class QLyController {
 
 	@Autowired
 	private NguyenVatLieuService nguyenVatLieuService;
+	
+	@Autowired
+	private XuongService xuongService;
+	
+	@Autowired
+	private KhoService khoService;
 	
 	@GetMapping("/ListNhanVien_QLy")
 	public String listNhanVien(Model model) {
@@ -194,6 +204,52 @@ public class QLyController {
 		nguyenVatLieu.setTenNVL(tenNVL);
 		
 		nguyenVatLieuService.save(nguyenVatLieu);
+		return "redirect:/ListNVL_QLy";
+	}
+	
+	@GetMapping("/AddXuong")
+	public String AddXuong(@ModelAttribute Xuong xuong,Model model) {
+		model.addAttribute("tenXuong", "Xưởng Gia Công");
+		model.addAttribute("diaChi", "Hà Nội");
+		model.addAttribute("dienTich",50);
+		model.addAttribute("luongNhanCong", 20);
+		
+		return "quanLy_AddXuong";
+	}
+	@GetMapping("/Active_AddXuong")
+	public String Active_AddXuong(@RequestParam("tenXuong")String tenXuong,@RequestParam("diaChi")String diaChi,@RequestParam("dienTich")float dienTich,
+			@RequestParam("luongNhanCong")int luongNhanCong,@ModelAttribute Xuong xuong) {
+		xuong.setDiaChi(diaChi);
+		xuong.setDienTich(dienTich);
+		xuong.setLuongNhanCong(luongNhanCong);
+		xuong.setTenXuong(tenXuong);
+		
+		xuongService.save(xuong);
+		return "redirect:/ListNVL_QLy";
+	}
+
+	@GetMapping("/AddKho")
+	public String AddKho(Model model) {
+		model.addAttribute("tenKho", "Kho Thành Phẩm");
+		model.addAttribute("diaChi", "Hà Nội");
+		model.addAttribute("dienTich",50);
+		model.addAttribute("luongNhanCong", 10);
+		model.addAttribute("IDnhanVien", 1);
+		return "quanLy_AddKho";
+	}
+	
+	@GetMapping("/Active_AddKho")
+	public String Active_AddKho(@RequestParam("tenKho")String tenKho,@RequestParam("diaChi")String diaChi,@RequestParam("dienTich")float dienTich,
+			@RequestParam("luongNhanCong")int luongNhanCong,@RequestParam("IDnhanVien")int IDnhanVien,@ModelAttribute Kho kho,@ModelAttribute NhanVien nhanVien){
+		kho.setID(1);
+		kho.setDiaChi(diaChi);
+		kho.setDienTich(dienTich);
+		kho.setLuongNhanCong(luongNhanCong);
+		kho.setTenKho(tenKho);
+		nhanVien=nhanVienService.findByID(IDnhanVien);
+		
+		kho.setNhanVien(nhanVien);
+		khoService.save(kho);
 		return "redirect:/ListNVL_QLy";
 	}
 }

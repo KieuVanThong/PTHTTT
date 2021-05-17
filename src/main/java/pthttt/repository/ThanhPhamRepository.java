@@ -21,4 +21,5 @@ public interface ThanhPhamRepository extends JpaRepository<ThanhPham, Integer>{
 	public ThanhPham findByID(int ID);
 	
 	public List<ThanhPham> findAllByPhieuDatHang(PhieuDatHang phieuDatHang) ;
+	
 }

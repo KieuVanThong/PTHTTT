@@ -15,4 +15,8 @@ public class XuongService {
 	public Xuong findXuong(int ID) {
 		return xuongRepository.findById(ID);
 	}
+	
+	public Xuong save(Xuong xuong) {
+		return xuongRepository.save(xuong);
+	}
 }

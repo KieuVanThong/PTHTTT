@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <link rel="stylesheet"
@@ -10,55 +10,38 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
 	rel="stylesheet" />
-<title>Quản Lý Kinh Doanh</title>
+<title>Quản Lý</title>
 <meta charset="UTF-8" />
-<link rel="stylesheet" th:href="@{/KD_addPDH.css}" />
+<link rel="stylesheet" th:href="@{/KD_addPDH.css}">
 </head>
 <body class="screen">
 	<div class="header">
-		<span th:text="${session.hoTenKinhDoanh}" th:unless="${session==null}"
-			class="header__username"></span> <a th:href="@{/PhieuDatHang}"
-			class="header__main">Phiếu Đặt Hàng</a> <a th:href="@{/LogOut}"
-			class="header__logout">Đăng xuất</a>
+		<p th:text="${session.hoTenQLy}" class="header__username"
+			th:unless="${session==null}"></p>
+		<a th:href="@{/ListNhanVien_QLy}" class="header__main">Quản Lý
+			Nhân Viên</a><a th:href="@{/ListSanPham_QLy}" class="header__main">Quản
+			Lý Sản Phẩm</a><a th:href="@{/ListNVL_QLy}" class="header__main">Quản
+			Lý NVL</a> <a th:href="@{/LogOut}" class="header__logout">Đăng xuất</a>
 	</div>
 
-	<div class="slider">Sửa Phiếu Thu</div>
+	<div class="slider"></div>
 	<div class="content">
-		<form th:action="@{/Active_EditPhieuThu}" method="GET"
+		<form th:action="@{/Active_AddXuong}" method='GET'
 			class="content__form">
 			<div class="content__table">
 				<div>
-					<span>ID</span> <input type="text" th:value="${ID}" th:name="ID"
-						th:readonly="true" />
+					<span>Tên Xưởng</span> <input type='text' th:value="${tenXuong}" th:name="tenXuong"
+						required />
 				</div>
 				<div>
-					<span>Loại Phiếu</span> <input type="text" th:value="${loaiPhieu}"
-						th:name="loaiPhieu"  required/>
+					<span>Địa Chỉ</span> <input type='text' th:value="${diaChi}" th:name="diaChi"
+						required />
 				</div>
 				<div>
-					<span>Số Phiếu</span> <input type="text" th:value="${soPhieu}"
-						th:name="soPhieu" required/>
+					<span>Diện Tích</span> <input type='text' th:value="${dienTich}" th:name="dienTich" required />
 				</div>
 				<div>
-					<span>Ngày Lập</span> <input type="text" th:value="${ngay}"
-						th:name="ngay" required/>
-				</div>
-				<div>
-					<span>Nội Dung</span> <input type="text" th:value="${noiDung}"
-						th:name="noiDung" required/>
-				</div>
-				<div>
-					<span>Chú Thích</span> <input type="text" th:value="${chuThich}"
-						th:name="chuThich" required/>
-				</div>
-				<div>
-					<span>Tiền Đặt Cọc</span> <input type="text"
-						th:value="${tienDatCoc}" th:name="tienDatCoc" required/>
-				</div>
-				<div>
-					<span>Mã Phiếu Đặt Hàng</span> <input type="text"
-						th:value="${maPhieuDatHang}" th:name="maPhieuDatHang"
-						th:readonly="true" />
+					<span>Lượng Nhân Công</span> <input type='text' th:value="${luongNhanCong}" th:name="luongNhanCong" required />
 				</div>
 				<div>
 					<input name="submit" type="submit" value="submit" />

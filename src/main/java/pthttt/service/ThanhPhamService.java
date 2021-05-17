@@ -15,8 +15,8 @@ public class ThanhPhamService {
 	@Autowired
 	private ThanhPhamRepository thanhPhamRepository;
 	
-	public void saveThanhPham(ThanhPham thanhPham) {
-		 thanhPhamRepository.save(thanhPham);
+	public ThanhPham saveThanhPham(ThanhPham thanhPham) {
+		 return thanhPhamRepository.save(thanhPham);
 	}
 
 	public List<ThanhPham> findAllThanhPhams() {
