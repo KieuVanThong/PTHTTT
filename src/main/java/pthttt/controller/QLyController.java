@@ -219,6 +219,7 @@ public class QLyController {
 	@GetMapping("/Active_AddXuong")
 	public String Active_AddXuong(@RequestParam("tenXuong")String tenXuong,@RequestParam("diaChi")String diaChi,@RequestParam("dienTich")float dienTich,
 			@RequestParam("luongNhanCong")int luongNhanCong,@ModelAttribute Xuong xuong) {
+		xuong.setID(1);
 		xuong.setDiaChi(diaChi);
 		xuong.setDienTich(dienTich);
 		xuong.setLuongNhanCong(luongNhanCong);
