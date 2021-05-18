@@ -16,8 +16,8 @@ public class Xuong implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "ID",nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID",nullable = false)
 	private int ID;
 	
 	@Column(name = "TenXuong",nullable = false)
