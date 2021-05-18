@@ -154,7 +154,7 @@ public class QLyThuMuaController {
 	public String removePhieuMuaNVL(@PathVariable int ID, @ModelAttribute PhieuMuaNVL phieuMuaNVL) {
 		phieuMuaNVL = phieuMuaNVLService.findOneByID(ID);
 		if (nvlCanDungService.check(phieuMuaNVL) || phieuChiService.check(phieuMuaNVL)) {
-			return "reidrect:/listLenhSanXuat_TM";
+			return "reidrect:/ListLenhSanXuat_TM";
 		} else {
 			phieuMuaNVLService.delete(ID);
 		}
