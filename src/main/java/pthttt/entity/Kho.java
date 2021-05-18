@@ -18,6 +18,7 @@ public class Kho implements Serializable{
 
 	@Id
 	@Column(name = "ID",nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ID;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
