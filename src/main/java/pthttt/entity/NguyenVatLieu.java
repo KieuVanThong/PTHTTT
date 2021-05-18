@@ -15,6 +15,7 @@ public class NguyenVatLieu implements Serializable{
 	
 	@Id
 	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ID;
 	
 	@Column(name = "MaNVL",nullable = false)
